@@ -8,7 +8,7 @@ namespace Exempel7
         static void Main(string[] args)
         {
             //Skriv in den metoden du vill testa, t.ex: Exempel712();
-            Exempel752();
+            Exempel753();
         }
 
         static void Exempel712() //Övning 7.1.2
@@ -322,26 +322,45 @@ namespace Exempel7
 
         static void Exempel753() //Övning 7.5.3
         {
-            Console.WriteLine("This part of the program will ask you to enter how many times you want to flip a coin. It will then show you the results of the flips.");
+            
+            Console.WriteLine("This part of the program will ask you to enter how many times you want to flip a coin. It will then show you the results of the flips.\n"); //Berättar vad programmet kommer att göra
 
-            Console.WriteLine("Please enter how many times you wish to flip a coin: ");
-            int times = Convert.ToInt32(Console.ReadLine());
-            int i = 0;
+        
+            Console.WriteLine("Please enter how many times you wish to flip a coin: \n"); //Frågar användaren hur många gånger de vill singla slant
+            int times = Convert.ToInt32(Console.ReadLine()); //intierar variablen times till det värde användaren skriver i 
+            int i = 0; //initierar variablen i till 0 (loop styrning)
 
-            string[] coin = { "Heads", "Tails" };
-            int heads = 0;
-            int tails = 0;
-            var rand = new Random();
-            const int faces = 2;
+            string[] coin = { "Heads", "Tails" }; //Skapar ett fält med två värden för att kunna räkna hur många gånger myntet har landat på en specifik sida
+            int heads = 0; //intierar variablen heads till 0
+            int tails = 0; //initierar variablen tails till 0
+            var rand = new Random(); //initierar variablen rand och sätter den till att skapa ett ny random instans
+            const int faces = 2; //intierar den konstanta variablen faces till 2 (så många sidor har ett mynt)
 
-            while (i > times)
+            while (i < times) //medans i är mindre än times kör vi loopen 
             {
-                int second = rand.Next(faces);
-                if (second == 1)
+                int flip = rand.Next(faces); //här singlar vi myntet, vi initierar variablen flip till en random intans där värdet kan vara 0 eller 1 
+                if (flip == 1) //OM flip blir 1 
                 {
-                    Console.WriteLine();
+                    Console.WriteLine("Coin landed on heads\n"); //Berättar resultatet
+                    heads += 1; //Lägger till +1 till heads i fältet coins
+
+                    Console.WriteLine($"You have landed on heads: {heads} time(s)"); //berättar hur många gånger myntet har landat på heads
+
+                    Console.WriteLine($"You have landed on heads: {tails} time(s)\n"); //berättar hur många gånger myntet har landat på tails 
+                    i++; // lägger till +1 till i's värde
+                }
+                else
+                {
+                    Console.WriteLine("Coin landed on tails\n"); //Berättar resultatet
+                    tails += 1; //Lägger till +1 till heads i fältet coins
+
+                    Console.WriteLine($"You have landed on heads: {heads} time(s)"); //berättar hur många gånger myntet har landat på heads
+
+                    Console.WriteLine($"You have landed on heads: {tails} time(s)\n"); //berättar hur många gånger myntet har landat på tails 
+                    i++; // lägger till +1 till i's värde
                 }
             }
+            Console.WriteLine("Goodbye!"); 
         }
     }
 }
