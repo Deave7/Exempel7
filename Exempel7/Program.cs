@@ -400,12 +400,57 @@ namespace Exempel7
             }
         }
 
+        static void Exempel81() //Övning 8.1
+        {
+            Console.WriteLine("Termostat");
 
+            int? temperature = null; //Intierar variablen temperature till null (därav ? efter int)
+            bool loop = true; //Initierar variablen loop till true
+
+            while (loop) //Fortsätt loopen medans loop = true
+            {
+               if (temperature != null) //Om variablen temperature inte har värdet null skriv ut kommandot nedan
+               {
+                   Console.WriteLine("Temperaturen är: " + temperature + "\n");
+               }
+
+               //Skriver ut menyn 
+                Console.WriteLine("Välj ett alternativ");
+                Console.WriteLine("[M]ata in temperatur");
+                Console.WriteLine("[A]vsluta;");
+                string choice = Console.ReadLine(); //intierar variablen choice till det användaren matar in 
+
+                switch (choice) //switch sats som använder variablen choice's värde
+                {
+                    case "M": //Om användaren skriver i "M"
+                        Console.WriteLine("Var god mata in temperaturen: "); //Be användaren skriva in temperaturen
+                        temperature = Convert.ToInt32(Console.ReadLine()); //Sätt variablem variablen temperature till användarens svar och konvertera svaret från en string till en int 
+                        break; //Går ur switch blocket
+
+                    case "A": //Om användaren skriver i "A"
+                        Console.WriteLine("Programmet avslutas, välkommen åter");
+                        return; //Går ur loopen
+
+                    default:
+                        Console.WriteLine("Felalktig inmatning, försök igen\n");
+                        break; //Går ur switch blocket
+                }
+
+                if (temperature < 17) //Om variablen temperature är mindre än 17
+                {
+                    temperature = 20; //Sätter variablen temperatur till 20
+                }
+                else if (temperature > 25) //Om variablen temperature är mer än 25
+                {
+                    temperature = 20; //Sätt variablen temperature till 20
+                }
+            }
+        }
 
         static void Main(string[] args)
         {
             //Skriv in den metoden du vill testa, t.ex: Exempel712();
-            Exempel755();
+            Exempel81();
         }
     }
 }
